@@ -2,19 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 import TimeLineItem from "../components/TimeLineItem.astro";
 import Project from "../components/Project.astro";
+import Badge from "../components/Badge.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Tobias Halupczok - Portfolio">
   <main>
     <ul
       class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-      <TimeLineItem title="Myfactory / Forterro" timeframe="2019-heute" first={true}>
+      <TimeLineItem
+        title="Myfactory / Forterro"
+        timeframe="2019-heute"
+        first={true}>
         <i class="fa-solid fa-briefcase" slot="icon"></i>
         <Fragment slot="body">Full Stack Software Engineer</Fragment>
       </TimeLineItem>
       <TimeLineItem title="BS Informatik" timeframe="2018">
         <i class="fa-solid fa-graduation-cap" slot="icon"></i>
-        <Fragment slot="body">Hochschule Rosenheim<br />Abschlussarbeit: AAA</Fragment>
+        <Fragment slot="body">
+          Hochschule Rosenheim<br />Abschlussarbeit: Kunden- und
+          Rechnungsverwaltung für Selbstständige und kleine Handwerksunternehmen
+        </Fragment>
       </TimeLineItem>
       <TimeLineItem title="Abitur" timeframe="2009">
         <i class="fa-solid fa-school" slot="icon"></i>
@@ -27,29 +34,52 @@ import Project from "../components/Project.astro";
     </ul>
 
     <section class="flex flex-col gap-2">
-    <h2>Projekte:</h2>
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <Project title="Myfactory" type="professionell" href="/">
-        <p slot="body" class="text-sm">eins</p>
-        <Fragment slot="technologies">Test 1</Fragment>
-      </Project>
-      <Project title="homelab" type="privat" href="/">
-        <p slot="body" class="text-sm">zwei</p>
-        <Fragment slot="technologies">Test 2</Fragment>
-      </Project>
-    </ul>
-  </section>
-
+      <h2>Projekte:</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Project
+          title="Myfactory"
+          subtitle="Full Stack Softwareentwicklung"
+          type="professionell"
+          href="/">
+          <Fragment slot="text"> Cloud ERP Software </Fragment>
+          <Fragment slot="subtext"> Module: ERP, CRM, HRM, POS </Fragment>
+          <Fragment slot="technologies">
+            <Badge>.NET</Badge>
+            <Badge>C#</Badge>
+            <Badge>SQL</Badge>
+            <Badge><i class="fa-brands fa-js"></i>JavaScript</Badge>
+          </Fragment>
+        </Project>
+        <Project
+          title="HomeLab"
+          subtitle="Lern- und Freizeitserverumgebung"
+          type="privat"
+          href="/">
+          <Fragment slot="text">
+            zahlreiche private und öffentliche Dienste
+          </Fragment>
+          <Fragment slot="subtext">
+            z.B. Hosten dieser Webseite, Automatisierungen, VoIP-Server
+          </Fragment>
+          <Fragment slot="technologies">
+            <Badge><i class="fa-brands fa-linux"></i>Linux</Badge>
+            <Badge><i class="fa-brands fa-docker"></i>Docker</Badge>
+            <Badge><i class="fa-brands fa-cloudflare"></i>DDNS</Badge>
+          </Fragment>
+        </Project>
+      </ul>
+    </section>
   </main>
+
+  <style>
+    main {
+      margin: auto;
+      padding: 1rem;
+      width: 800px;
+      max-width: calc(100% - 2rem);
+      color: white;
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+  </style>
 </Layout>
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 1.25rem;
-    line-height: 1.6;
-  }
-</style>
