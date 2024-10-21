@@ -1,26 +1,26 @@
 ---
 interface Props {
 	title: string;
-	body: string;
+	type: string,
 	href: string;
 }
-
-const { href, title, body } = Astro.props;
+const { title, type, href } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
+<li class="project">
+	<a href={href} class="flex flex-col gap-2">
+		<div class="inline-flex justify-between">
+			<h2>{title}</h2>
+			<span class="text-sm italic text-neutral-400">{type}</span></div>
+		<slot name="body"/>
+		<div class="flex flex-row">
+			<slot name="technologies"/>
+		</div>
+		
 	</a>
 </li>
 <style>
-	.link-card {
+	.project {
 		list-style: none;
 		display: flex;
 		padding: 1px;
@@ -32,7 +32,7 @@ const { href, title, body } = Astro.props;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
-	.link-card > a {
+	.project > a {
 		width: 100%;
 		text-decoration: none;
 		line-height: 1.4;
@@ -51,11 +51,11 @@ const { href, title, body } = Astro.props;
 		margin-top: 0.5rem;
 		margin-bottom: 0;
 	}
-	.link-card:is(:hover, :focus-within) {
+	.project:is(:hover, :focus-within) {
 		background-position: 0;
 		background-image: var(--accent-gradient);
 	}
-	.link-card:is(:hover, :focus-within) h2 {
+	.project:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
 	}
 </style>

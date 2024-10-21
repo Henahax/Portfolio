@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TimeLineItem from "../components/TimeLineItem.astro";
+import Project from "../components/Project.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -24,6 +25,21 @@ import TimeLineItem from "../components/TimeLineItem.astro";
         <Fragment slot="body">Weilheim in Oberbayern</Fragment>
       </TimeLineItem>
     </ul>
+
+    <section class="flex flex-col gap-2">
+    <h2>Projekte:</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Project title="Myfactory" type="professionell" href="/">
+        <p slot="body" class="text-sm">eins</p>
+        <Fragment slot="technologies">Test 1</Fragment>
+      </Project>
+      <Project title="homelab" type="privat" href="/">
+        <p slot="body" class="text-sm">zwei</p>
+        <Fragment slot="technologies">Test 2</Fragment>
+      </Project>
+    </ul>
+  </section>
+
   </main>
 </Layout>
 <style>
