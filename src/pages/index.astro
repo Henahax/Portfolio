@@ -30,7 +30,7 @@ import Project from "@/components/Project.astro";
 </script>
 
 <Layout title="Welcome to Astro.">
-  <main>
+  <main class="p-4">
     <section>
       <div class="flex">
         <img
@@ -39,35 +39,27 @@ import Project from "@/components/Project.astro";
           alt="henahax"
         />
         <div>
-			<h2>Tobias Halupczok</h2>
-			<p>dev</p>
-		</div>
+          <h2>Tobias Halupczok</h2>
+          <p>dev</p>
+        </div>
       </div>
     </section>
     <section>Timeline</section>
     <section>
-      <div class="grid gap-4 p-4">
+      <div class="projects grid auto-cols-fr gap-4">
         <Project
           name="Myfactory"
           link="https://myfactory.com"
           type="professionell"
           description="Cloud ERP System"
-        >
-          <Fragment slot="technologies">
-            <Badge variant="outline">C#</Badge>
-            <Badge variant="outline">.NET</Badge>
-            <Badge variant="outline">
-              <span class="flex flex-row gap-1.5 items-center">
-                <i class="fa-brands fa-js"></i>JavaScript
-              </span>
-            </Badge>
-          </Fragment>
-        </Project>
+          tags={[".NET", "C#", "JavaSript", "SQL"]}
+        />
         <Project
           name="HomeLab"
           link="https://github.com/Henahax/HomeLab"
           type="privat"
           description="test"
+          tags={["Linux", "VM", "Docker"]}
         />
       </div>
     </section>
@@ -75,4 +67,8 @@ import Project from "@/components/Project.astro";
   </main>
 </Layout>
 
-<style></style>
+<style>
+  .projects{
+    grid-template-columns: 1fr fit-content(20%);
+  }
+</style>
